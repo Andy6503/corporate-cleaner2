@@ -15,12 +15,42 @@
 }
 .photo {
   align-content: center;
-  height: 180px;
   width: 200px;
+  height: 180px;
+  border: 1px solid rgba(3, 3, 3, 0.514);
+  box-shadow: 1px 1px 4px 4px #20000048;
+  
 }
 .bg-dark.text-white {
   flex-direction: row;
+  padding: 16px;
+  margin: 30px;
+  border-radius: 15px;
+  transition: 0.3s;
+  box-shadow: 1px 1px 4px 4px #18181848;
+}
+.bg-dark.text-white:hover {
+  transform: scale(1.05);
 }
 body {
   background-color: black;
+}
+
+.card-text-format {
+  width: 60%;
+  display: inline-block;
+}
+
+h2 {
+  padding-top: 15px;
+}
+
+.input-text {
+  width: 400px;
+  margin-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.mb-3 {
+  
 }

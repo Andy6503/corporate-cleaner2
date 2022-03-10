@@ -9,12 +9,12 @@ function FavoritesArticleCard({ article, onRemove  }){
     return (
         <Card className="bg-dark text-white">
             <Card.Img className="photo" src={urlToImage} alt="Article image" />
-            <Card.ImgOverlay>
-                <Card.Title>{title}</Card.Title>
+            <Card.Body className="card-text-format">
+                <Card.Title className="title">{title}</Card.Title>
                 <Card.Text>{author}</Card.Text>
-                <Card.Text>{description}</Card.Text>
-                <Button variant="danger" onClick={() => onRemove(article)}> Remove from Favorites </Button> 
-            </Card.ImgOverlay>
+                <Card.Text className="description">{description}</Card.Text>
+                <Button variant="light" onClick={() => onRemove(article)}> Remove from Favorites </Button> 
+            </Card.Body>
         </Card>
     )
 }
