@@ -15,7 +15,6 @@ function ArticleList({ articles, searchArticles, onAddToFavorites }){
     //console.log(searchArticles)
     return(
         <div>{searchArticles.length !== 0 ? searchArticleItems : articleItems}</div>
-        //make sure to check this ^
     )
 }
 

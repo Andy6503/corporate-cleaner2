@@ -6,15 +6,15 @@ function CreateArticleCard({ newArticle }){
 
 
     return (
-        <Card className="bg-dark text-white"> 
+    <Card className="bg-dark text-white"> 
     <Card.Img variant="top" className="photo" src={urlToImage} alt="Article pic"  />
     <Card.Body>
        <Card.Title className="title">{title}</Card.Title>
        <Card.Text>{author}</Card.Text>
-      <Card.Text className="description">{description}</Card.Text>
+       <Card.Text className="description">{description}</Card.Text>
     <Button variant="danger" > Delete from Submissons </Button> 
     </Card.Body>
-  </Card>
+    </Card>
     )
 }
 

@@ -102,10 +102,19 @@ const history = useHistory();
     })
   }
   //This handles the backend of the search funtion ^
+
+  
+  function handleArticleRefresh () { 
+    fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=9b41315c8a15471ba340ecd223cb1e5d")
+    .then(res => res.json())
+    .then((articles) => {
+        setArticles(articles.articles)
+    })
+  }
   
   return (
     <div className="App">
-      <NavBar onSearch={onSearch}/>
+      <NavBar onSearch={onSearch} handleArticleRefresh={handleArticleRefresh}/>
       <Route exact path="/">
          <Redirect to="/home" />
       </Route>

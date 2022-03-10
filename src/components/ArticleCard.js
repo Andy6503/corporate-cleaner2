@@ -10,12 +10,12 @@ function ArticleCard({ article, onAdd }){
     <Card className="bg-dark text-white"> 
     <Card.Img variant="top" className="photo" src={urlToImage} alt="Article pic"  />
     <Card.Body>
-       <Card.Title className="title">{title}</Card.Title>
-       <Card.Text>{author}</Card.Text>
+      <Card.Title className="title">{title}</Card.Title>
+      <Card.Text>{author}</Card.Text>
       <Card.Text className="description">{description}</Card.Text>
     <Button variant="primary" onClick={() => onAdd(article)}> Add to Favorites </Button> 
     </Card.Body>
-  </Card>
+    </Card>
     )
 }
 

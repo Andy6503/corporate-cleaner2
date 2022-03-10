@@ -6,7 +6,6 @@ function FavoritesArticleCard({ article, onRemove  }){
     const { author, title, description, url, urlToImage, publishedAt, content} = article
 
     
-
     return (
         <Card className="bg-dark text-white">
             <Card.Img className="photo" src={urlToImage} alt="Article image" />

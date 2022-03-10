@@ -6,8 +6,9 @@
 .title{
   text-shadow: 2px 2px 5px red;
 }
-.description{
-  
+.logo{
+  height: 100px;
+  width: 100px;
 }
 .url{
   text-decoration-line: underline;
@@ -19,4 +20,7 @@
 }
 .bg-dark.text-white {
   flex-direction: row;
+}
+body {
+  background-color: black;
 }

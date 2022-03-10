@@ -16,3 +16,4 @@ function Favorites({ favList, onRemoveFromFavorites}){
 }
 
 export default Favorites;
+

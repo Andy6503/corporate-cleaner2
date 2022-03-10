@@ -8,7 +8,6 @@ function NewsHome({ searchArticles, articles, onAddToFavorites }){
    
     return(
         <ArticleList articles={articles} searchArticles={searchArticles} onAddToFavorites={onAddToFavorites} />
-
     );
 }
 
