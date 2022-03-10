@@ -23,8 +23,8 @@ function Search( {onSearch} ){
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Control onChange={(e) => setSearchOnChange(e.target.value)} type="search" value={searchOnChange} placeholder="Enter a search" /> 
-                            <Form.Text className="text-muted"> Search for any articles! </Form.Text> 
-                            <Button variant="primary" type="submit"> Submit </Button>
+                            <Form.Text className="text-muted"> Search for any article! </Form.Text> 
+                            <Button variant="light" type="submit"> Submit </Button>
                         </Form.Group>  
                     </Form>
                 </Navbar.Collapse>

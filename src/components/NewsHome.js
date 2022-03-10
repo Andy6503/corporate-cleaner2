@@ -7,7 +7,10 @@ function NewsHome({ searchArticles, articles, onAddToFavorites }){
     
    
     return(
-        <ArticleList articles={articles} searchArticles={searchArticles} onAddToFavorites={onAddToFavorites} />
+        <>
+            <h2>Lastest News </h2>
+            <ArticleList articles={articles} searchArticles={searchArticles} onAddToFavorites={onAddToFavorites} />
+        </>
     );
 }
 

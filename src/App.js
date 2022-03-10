@@ -29,7 +29,7 @@ function App() {
     .then((newArticles) => {
       setNewArticles(newArticles)
     })
-  },[])
+  }, [])
 // These are the articles that display on the "Submit an Article" page ^
 
 useEffect(() => {
@@ -42,7 +42,7 @@ useEffect(() => {
 
 
 function addNewArticle(newArticleItem){
-  setArticles([...newArticles, newArticleItem])
+  setNewArticles([...newArticles, newArticleItem])
 }
 
 function handleAddtoFavorites(article){
@@ -58,7 +58,8 @@ function handleAddtoFavorites(article){
             description: article.description,
             url: article.url,
             urlToImage: article.urlToImage,
-            content: article.content
+            content: article.content,
+            publishedAt: article.publishedAt 
           })
         })
         .then(resp => resp.json())
@@ -89,6 +90,19 @@ function handleRemoveFromFavorties(article){
 }
 //This handles the process of removing an article from the Favorites ^
 
+function handleRemoveFromSubmissions(newArticle){
+  //console.log(article) - works
+  const foundIndex = newArticles.findIndex(item => newArticle.title === item.title);
+  if (foundIndex === -1){
+      alert("Article isn't in submissions!")
+  } else {
+      fetch(`http://localhost:3001/newArticles/${newArticle.id}`, {
+        method: "DELETE"})
+      const copyArray = [...newArticles]
+      copyArray.splice(foundIndex, 1);
+      setNewArticles(copyArray);
+  }
+}
 const history = useHistory();
 
   function onSearch (search){
@@ -122,7 +136,7 @@ const history = useHistory();
         <NewsHome searchArticles={searchArticles} articles={articles} onAddToFavorites={handleAddtoFavorites} />
       </Route>
       <Route path="/submit-article">
-        <CreateArticle addNewArticle={addNewArticle} newArticles={newArticles} />
+        <CreateArticle addNewArticle={addNewArticle} removeSubmissions={handleRemoveFromSubmissions} newArticles={newArticles} />
       </Route>
       <Route path="/favorites">
         <Favorites favList={favList} onRemoveFromFavorites={handleRemoveFromFavorties}/>

@@ -42,7 +42,13 @@ body {
 }
 
 h2 {
+  color: white;
   padding-top: 15px;
+  text-shadow: 2px 2px 5px red;
+}
+h3, h1 {
+  color: white;
+  text-shadow: 2px 2px 5px red;
 }
 
 .input-text {

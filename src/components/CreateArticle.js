@@ -5,13 +5,13 @@ import Button from 'react-bootstrap/Button'
 
 
 
-function CreateArticle({ addNewArticle, newArticles }){
+function CreateArticle({ addNewArticle, newArticles, removeSubmissions }){
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")
     const [description, setDescription] = useState("")
-    const [link, setLink] = useState("")
-    const [image, setImage] = useState("")
-    const [date, setdate] = useState("")
+    const [url, setUrl] = useState("")
+    const [urlToImage, setUrlToImage] = useState("")
+    const [publishedAt, setPublishedAt] = useState("")
 
     function handleOnSubmit(e) {
         e.preventDefault()
@@ -24,9 +24,9 @@ function CreateArticle({ addNewArticle, newArticles }){
            title: title,
            author: author,
            description: description,
-           link: link,
-           image: image,
-           date: date
+           url: url,
+           urlToImage: urlToImage,
+           publishedAt: publishedAt
          })
         })
         .then(res => res.json())
@@ -34,13 +34,13 @@ function CreateArticle({ addNewArticle, newArticles }){
         setTitle("")
         setAuthor("")
         setDescription("")
-        setLink("")
-        setImage("")
-        setdate("")
+        setUrl("")
+        setUrlToImage("")
+        setPublishedAt("")
       }
     
       const newArticleList = newArticles.map((newArticle) =>{
-          return <CreateArticleCard key={newArticle.id} newArticle={newArticle}  />
+          return <CreateArticleCard key={newArticle.id} removeSubmissions={removeSubmissions} newArticle={newArticle}  />
       })
       
     
@@ -52,9 +52,9 @@ function CreateArticle({ addNewArticle, newArticles }){
             <Form.Control type="text"  name="title" placeholder="Article title..." className="input-text" value={title} onChange={e => setTitle(e.target.value)} />
             <Form.Control type="text" name="author" placeholder="Article author..." className="input-text" value={author} onChange={e => setAuthor(e.target.value)}  />
             <Form.Control type="text" name="description" placeholder="Article description..." className="input-text" value={description} onChange={e => setDescription(e.target.value)}  />
-            <Form.Control type="text" name="link url" placeholder="Article link URL..." className="input-text" value={link} onChange={e => setLink(e.target.value)}  />
-            <Form.Control type="text" name="image" placeholder="Article image URL..." className="input-text" value={image} onChange={e => setImage(e.target.value)}  />
-            <Form.Control type="text" name="publish-date" placeholder="Article publish date..." className="input-text" value={date} onChange={e => setdate(e.target.value)}  />
+            <Form.Control type="text" name="link url" placeholder="Article link URL..." className="input-text" value={url} onChange={e => setUrl(e.target.value)}  />
+            <Form.Control type="text" name="image" placeholder="Article image URL..." className="input-text" value={urlToImage} onChange={e => setUrlToImage(e.target.value)}  />
+            <Form.Control type="text" name="publish-date" placeholder="Article publish date..." className="input-text" value={publishedAt} onChange={e => setPublishedAt(e.target.value)}  />
             <Button variant="light" type="submit" name="submit" value="Submit Article!" className="submit">Submit</Button>
           </Form.Group>
         </Form>
