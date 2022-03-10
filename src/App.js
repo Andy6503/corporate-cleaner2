@@ -10,6 +10,7 @@ import './App.css';
 function App() {
   const [articles, setArticles] = useState([]);
   const [favList, setFavList] = useState([]);
+  const [newArticles, setNewArticles] = useState([]);
   const [searchArticles, setSearchArticles] = useState([]);
 
   
@@ -21,12 +22,51 @@ function App() {
     })
 }, []);
 // These are the top articles that display when on the home page ^
+ 
+  useEffect(() => {
+    fetch('http://localhost:3001/newArticles')
+    .then(res => res.json())
+    .then((newArticles) => {
+      setNewArticles(newArticles)
+    })
+  },[])
+// These are the articles that display on the "Submit an Article" page ^
+
+useEffect(() => {
+  fetch("http://localhost:3001/favorites")
+  .then(res => res.json())
+  .then((articles) => {
+      setFavList(articles)
+  })
+}, []);
+
+
+function addNewArticle(newArticleItem){
+  setArticles([...newArticles, newArticleItem])
+}
 
 function handleAddtoFavorites(article){
-    const foundIndex = favList.findIndex(item => article.title === item.id);
+  //console.log(article) - works
+    const foundIndex = favList.findIndex(item => article.title === item.title);
     if(foundIndex === -1){
-        setFavList([...favList, article]);
-        console.log(favList)
+        fetch('http://localhost:3001/favorites', {
+          method: "POST",
+          headers: { "Content-Type": "application/json"},
+          body: JSON.stringify({
+            title: article.title,
+            author: article.author,
+            description: article.description,
+            url: article.url,
+            urlToImage: article.urlToImage,
+            content: article.content
+          })
+        })
+        .then(resp => resp.json())
+        .then(json => {
+          //console.log(json) - works
+          setFavList([...favList, json]);
+        })
+        //console.log(favList) - works
     } else {
         alert("Article is already in Favorites!")
     }
@@ -35,15 +75,17 @@ function handleAddtoFavorites(article){
 //This handles the process of adding an article to the Favorites ^
 
 function handleRemoveFromFavorties(article){
-    const foundIndex = favList.findIndex(item => article.title === item.id);
-    if (foundIndex === -1){
-        alert("Article isn't in Favorites!")
-    } else {
-        const copyArray = [...favList]
-        copyArray.splice(foundIndex, 1);
-
-        setFavList(copyArray);
-    }
+  //console.log(article) - works
+  const foundIndex = favList.findIndex(item => article.title === item.title);
+  if (foundIndex === -1){
+      alert("Article isn't in Favorites!")
+  } else {
+      fetch(`http://localhost:3001/favorites/${article.id}`, {
+        method: "DELETE"})
+      const copyArray = [...favList]
+      copyArray.splice(foundIndex, 1);
+      setFavList(copyArray);
+  }
 }
 //This handles the process of removing an article from the Favorites ^
 
@@ -71,13 +113,14 @@ const history = useHistory();
         <NewsHome searchArticles={searchArticles} articles={articles} onAddToFavorites={handleAddtoFavorites} />
       </Route>
       <Route path="/submit-article">
-        <CreateArticle />
+        <CreateArticle addNewArticle={addNewArticle} newArticles={newArticles} />
       </Route>
       <Route path="/favorites">
         <Favorites favList={favList} onRemoveFromFavorites={handleRemoveFromFavorties}/>
       </Route>
     </div>
   );
+  // Everything up is what is rendered when user visits page and where the navbar routes the user to
 }
 
 export default App;

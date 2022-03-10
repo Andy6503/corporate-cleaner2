@@ -1,22 +1,21 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap";
+import {Card, Button} from "react-bootstrap"
 
+function CreateArticleCard({ newArticle }){
+ const {title, author, description, url, urlToImage, publishAt } = newArticle
 
-function ArticleCard({ article, onAdd }){
-    const { author, title, description, url, urlToImage, publishedAt, content} = article
 
     return (
-     
-    <Card className="bg-dark text-white"> 
+        <Card className="bg-dark text-white"> 
     <Card.Img variant="top" className="photo" src={urlToImage} alt="Article pic"  />
     <Card.Body>
        <Card.Title className="title">{title}</Card.Title>
        <Card.Text>{author}</Card.Text>
       <Card.Text className="description">{description}</Card.Text>
-    <Button variant="primary" onClick={() => onAdd(article)}> Add to Favorites </Button> 
+    <Button variant="danger" > Delete from Submissons </Button> 
     </Card.Body>
   </Card>
     )
 }
 
-export default ArticleCard
+export default CreateArticleCard

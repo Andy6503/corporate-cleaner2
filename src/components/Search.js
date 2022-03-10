@@ -10,6 +10,7 @@ function Search( {onSearch} ){
         e.preventDefault()
         onSearch(searchOnChange)
     }
+    // Prevents webage from reload constantly when the user is trying to search 
     
     return (
         <Form onSubmit={handleSubmit}>
@@ -24,10 +25,8 @@ function Search( {onSearch} ){
             Submit
             </Button>
         </Form>
-
-    
-    
     )
+    //This code formats the search bar and allows it to take in an input and call the "setSearchOnChange" function based on the input
 }
 
 export default Search;
