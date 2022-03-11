@@ -1,5 +1,4 @@
 import React from "react";
-import {NavLink} from 'react-router-dom'
 import Search from './Search.js'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -9,7 +8,7 @@ function NavBar( {onSearch, handleArticleRefresh} ){
     
     return (
     <>
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" sticky="top" variant="dark">
                 <Navbar.Brand href="/home" onClick={handleArticleRefresh}>
                 <img src={OwlLogo} className="logo" alt="News Owl Logo"/>
                     Home

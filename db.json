@@ -8,15 +8,6 @@
       "urlToImage": "https://nbhc.ca/sites/default/files/styles/article/public/default_images/news-default-image%402x_0.png?itok=B4jML1jF",
       "publishedAt": "3/10/2022",
       "id": 1
-    },
-    {
-      "title": "Example",
-      "author": "Andrew Kapsa",
-      "description": "please",
-      "url": "https://www.wsj.com/articles/chelsea-fc-owner-roman-abramovich-is-sanctioned-by-u-k-government-11646904912",
-      "urlToImage": "https://nbhc.ca/sites/default/files/styles/article/public/default_images/news-default-image%402x_0.png?itok=B4jML1jF",
-      "publishedAt": "3/10/2022",
-      "id": 2
     }
   ],
   "favorites": [
@@ -29,16 +20,6 @@
       "content": null,
       "publishedAt": "2022-03-10T19:55:00Z",
       "id": 1
-    },
-    {
-      "title": "Microsoft details its Steam Deck support for Xbox Game Studios titles - The Verge",
-      "author": "Tom Warren",
-      "description": "Microsoft is supporting Steam Deck with most of its Xbox Game Studios titles. Halo, Gears 5, and Microsoft Flight Simulator won’t be supported on Steam Deck, though.",
-      "url": "https://www.theverge.com/2022/3/10/22971257/microsoft-steam-deck-xbox-game-studios-list",
-      "urlToImage": "https://cdn.vox-cdn.com/thumbor/OEn2VWXc1kY0WaJBy_pVyjktVJE=/0x25:1280x695/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/23304433/xboxsteamdeck.jpg",
-      "content": "Halo, Gears 5, and Microsoft Flight Simulator arent supported\r\nMicrosoft is providing an update on its support for Valves Steam Deck today. Most Xbox Game Studios titles will run on the Steam Deck, b… [+1582 chars]",
-      "publishedAt": "2022-03-10T19:50:01Z",
-      "id": 2
     }
   ]
 }

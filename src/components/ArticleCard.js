@@ -6,13 +6,13 @@ import Popup from "./Popup";
 function ArticleCard({ article, onAdd }){
     const { author, title, description, url, urlToImage, publishedAt, content } = article
     const [buttonPopup, setButtonPopup] = useState(false);
-
-
+  
+    
     return (
      
     <>
     <Card className="bg-dark text-white">
-        <Card.Img variant="top" className="photo" src={urlToImage} alt="Article pic" />
+        <Card.Img variant="top" className="photo" src={urlToImage} alt="Article Photo"/>
         <Card.Body className="card-text-format">
           <Card.Title className="title">{title}</Card.Title>
           <Card.Text>{author}</Card.Text>
@@ -21,9 +21,9 @@ function ArticleCard({ article, onAdd }){
         </Card.Body>
       </Card><Popup trigger={buttonPopup} setTrigger={setButtonPopup} >
           <h3>{title} </h3>
-          <p>{author}</p>
+         <p>Author: {author}</p>
           <p>{description}</p>
-          <p>{publishedAt}</p>
+          <p>Publish date: {publishedAt}</p>
           <p>{content}</p>
           <Button href={url} target="_blank" variant="dark">
             Go to this Article

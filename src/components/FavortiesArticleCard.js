@@ -20,9 +20,9 @@ function FavoritesArticleCard({ article, onRemove  }){
             </Card>
             <Popup trigger={buttonPopup} setTrigger={setButtonPopup} >
             <h3>{title} </h3>
-            <p>{author}</p>
+            <p>Author: {author}</p>
             <p>{description}</p>
-            <p>{publishedAt}</p>
+            <p>Publish date: {publishedAt}</p>
             <p>{content}</p>
             <Button href={url} target="_blank" variant="dark">
             Go to this Article
