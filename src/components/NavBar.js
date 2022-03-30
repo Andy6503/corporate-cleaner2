@@ -1,31 +1,30 @@
 import React from "react";
-import Search from './Search.js'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import OwlLogo from '../assets/News-Owl-logos_white.png'
+import Logo from '../assets/Logo.png'
+import Image from 'react-bootstrap/Image'
 
-function NavBar( {onSearch, handleArticleRefresh} ){
+function NavBar( ){
     
     return (
     <>
-        <Navbar bg="dark" sticky="top" variant="dark">
-                <Navbar.Brand href="/home" onClick={handleArticleRefresh}>
-                <img src={OwlLogo} className="logo" alt="News Owl Logo"/>
-                    Home
+    <Navbar bg="dark" sticky="top" variant="dark">
+        <Navbar.Brand href="/home">
+            <Image src={Logo} className="logo" rounded alt="Money Maker Logo"/>
                 </Navbar.Brand>
                 <Nav className="me-auto">
-                <Nav.Link href="/submit-article">
-                    Submit an Article
+                <Nav.Link href="/your-company">
+                    View your Company
                 </Nav.Link>
-                <Nav.Link href="/favorites">
-                    Favorites
-                </Nav.Link>    
                 </Nav>
-                <div>
-                    <Search onSearch={onSearch}/>
-                </div>
-        </Navbar>
-        
+                <Navbar.Toggle />
+                    <Navbar.Collapse className="justify-content-end">
+                        <Navbar.Text >
+                            Signed in as: <a href="/account-details">Will Yu</a>
+                        </Navbar.Text>
+                    </Navbar.Collapse>
+            
+    </Navbar>
     </>
     )
 }
