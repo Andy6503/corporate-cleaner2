@@ -1,21 +1,20 @@
-@import 'bootstrap/dist/css/bootstrap.min.css';
+@import "bootstrap/dist/css/bootstrap.min.css";
 
-
-.logo{
+.logo {
   height: 100px;
   width: 100px;
-  margin-left:20px
+  margin-left: 200px;
 }
-.logo-2{
+.logo-2 {
   object-fit: inherit;
   object-position: center;
   height: 200px;
   width: 200px;
 }
-.logo-2div{
+.logo-2div {
   position: relative;
 }
-.url{
+.url {
   text-decoration-line: underline;
 }
 .photo {
@@ -24,7 +23,6 @@
   height: 180px;
   border: 1px solid rgba(3, 3, 3, 0.514);
   box-shadow: 1px 1px 4px 4px #20000048;
-  
 }
 .bg-dark.text-white {
   flex-direction: row;
@@ -40,37 +38,37 @@
 body {
   background-color: grey;
 }
-.accordion{
+.accordion {
   padding: 1px;
 }
-.accordion-button{
+.accordion-button {
   font-size: inherit;
   border: 1px solid black;
 }
 
- h1 {
-  color: rgb(130,176,77);
+h1 {
+  color: rgb(130, 176, 77);
   padding-top: 70px;
   padding-left: 70px;
   text-align: center;
   text-shadow: black;
   text-decoration-line: underline;
-  margin-bottom:45px;
+  margin-bottom: 45px;
 }
 .homepage {
   color: white;
   text-shadow: black;
   font-size: x-large;
   inline-size: 480px;
-  text-align:justify;
+  text-align: justify;
   padding-left: 70px;
 }
 .homepage-2 {
-  color: rgb(130,176,77);
+  color: rgb(130, 176, 77);
   text-shadow: black;
   font-size: x-large;
   inline-size: 470px;
-  text-align:justify;
+  text-align: justify;
   padding-left: 70px;
 }
 .input-text {
@@ -83,8 +81,6 @@ body {
   margin-right: 25px;
 }
 
-
-.employee-button{
- margin-left:15px;
-  
+.employee-button {
+  margin-left: 15px;
 }
