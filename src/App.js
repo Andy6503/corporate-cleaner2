@@ -8,7 +8,17 @@ import { useHistory } from "react-router-dom";
 import './App.css';
 
 function App() {
+   const [employees, setEmployees] = useState([]);
 
+  useEffect(()=> {
+    fetch("http://localhost:9292/employees")
+    .then(res => res.json())
+    .then(employees => {
+      setEmployees(employees)
+    })
+  }, []);
+
+ 
   
   return (
     <div className="App">
@@ -20,7 +30,7 @@ function App() {
         <Homepage />
       </Route>
       <Route path="/your-company">
-        <CompanyChart />
+        <CompanyChart employees={employees} />
       </Route>
       <Route path="/account-details">
         <AccountDetails />

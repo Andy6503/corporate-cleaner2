@@ -6,7 +6,7 @@ function AccountDetails(){
     
     return ( 
         <div>
-    <h1>This page will display the users account details</h1>
+    <h2>This page will display the users account details</h2>
      
      </div> 
      )

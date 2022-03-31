@@ -1,14 +1,18 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
-.App {
-  text-align: center;
-}
-.title{
-  text-shadow: 2px 2px 5px red;
-}
+
 .logo{
   height: 100px;
   width: 100px;
+}
+.logo-2{
+  object-fit: inherit;
+  object-position: center;
+  height: 200px;
+  width: 200px;
+}
+.logo-2div{
+  position: relative;
 }
 .url{
   text-decoration-line: underline;
@@ -33,7 +37,7 @@
   transform: scale(1.05);
 }
 body {
-  background-color: black;
+  background-color: rgba(23, 22, 22, 0.755);
 }
 
 .card-text-format {
@@ -41,16 +45,29 @@ body {
   display: inline-block;
 }
 
-h2 {
-  color: white;
-  padding-top: 15px;
-  text-shadow: 2px 2px 5px red;
+ h1 {
+  color: rgb(130,176,77);
+  padding-top: 70px;
+  padding-left: 70px;
+  text-shadow: black;
+  text-decoration-line: underline;
 }
-h3, h1 {
-  color: white;
-  text-shadow: 2px 2px 5px red;
+.homepage {
+  color: rgb(159, 158, 158);
+  text-shadow: black;
+  font-size: x-large;
+  inline-size: 480px;
+  overflow-wrap: break-word;
+  padding-left: 70px;
 }
-
+.homepage-2 {
+  color: white;
+  text-shadow: black;
+  font-size: x-large;
+  inline-size: 470px;
+  overflow-wrap: break-word;
+  padding-left: 70px;
+}
 .input-text {
   width: 400px;
   margin-bottom: 10px;
