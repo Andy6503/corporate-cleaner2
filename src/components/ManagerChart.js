@@ -1,6 +1,8 @@
 import React from "react";
 import ManagerItem from './ManagerItem.js'
-import EditFormModal from "./EditFormModal";
+import EditFormModalManager from "./EditFormModalManager";
+import {v4 as uuid} from "uuid"
+
 
 
 
@@ -8,7 +10,7 @@ function ManagerChart({ managers, onDelete }){
     const [modalShow, setModalShow] = React.useState(false);
 
     const managerChart = managers.map((manager) =>{
-        return <ManagerItem key={manager.id} manager={manager} onDelete= {onDelete} setModalShow = {setModalShow} />
+        return <ManagerItem key={uuid()} manager={manager} onDelete= {onDelete} setModalShow = {setModalShow} />
     })
 
 
@@ -16,7 +18,7 @@ function ManagerChart({ managers, onDelete }){
         <>
         <h2> Managers:</h2>
         {managerChart}
-        <EditFormModal
+        <EditFormModalManager
         show={modalShow}
         onHide={() => setModalShow(false)}
       />

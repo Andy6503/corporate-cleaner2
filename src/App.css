@@ -40,7 +40,9 @@
 body {
   background-color: grey;
 }
-
+.accordion{
+  padding: 1px;
+}
 .accordion-button{
   font-size: inherit;
   border: 1px solid black;

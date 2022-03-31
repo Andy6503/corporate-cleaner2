@@ -13,6 +13,7 @@ function App() {
    const [employees, setEmployees] = useState([]);
    const [managers, setManagers] = useState([]);
    const [supervisors, setSupervisors] = useState([]);
+   const [searchEmployees, setSearchEmployees] = useState([]);
 
 
 //////////////////////////////////////////////////////////////////
@@ -25,8 +26,19 @@ function App() {
     })
   }, []);
 
-  //PATCH REQUEST
-  
+  //SEARCH EMPLOYEES
+  const history = useHistory();
+
+  function onSearchEmployee (search){
+    setSearchEmployees([]);
+    console.log(search)
+    fetch("http://localhost:9292/employees")
+    .then(resp => resp.json())
+    .then(employees => {
+      setSearchEmployees(employees)
+    })
+  }
+ 
   
   //DELETE REQUEST EMPLOYEES
   const onDelete = (objID) => {
@@ -97,7 +109,7 @@ function App() {
         <Homepage />
       </Route>
       <Route path="/your-employees">
-        <EmployeeChart employees={employees} onDelete = {onDelete}/>
+        <EmployeeChart employees={employees} onDelete = {onDelete} onSearch = {onSearchEmployee} />
       </Route>
       <Route path="/your-managers">
         <ManagerChart managers={managers} onDelete = {onDeleteManagers} />
