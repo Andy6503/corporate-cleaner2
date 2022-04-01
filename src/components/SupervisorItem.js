@@ -37,7 +37,7 @@ function SupervisorItem({ supervisor, onDelete }) {
               className="employee-button"
               variant="warning"
             >
-              View Managers
+              VIEW MANAGERS
             </Button>
             <Button
               className="employee-button"
