@@ -38,8 +38,8 @@ function ManagerItem({ manager, onDelete }) {
         <Accordion.Item eventKey="0">
           <Accordion.Header>{name} </Accordion.Header>
           <Accordion.Body>
-            Manager id: {id} | BOD: {date_of_birth} | Salary: ${salary} |
-            Position: {position} | Supervisor: {supervisor_id}
+            Manager ID: {id} | BOD: {date_of_birth} | Salary: ${salary} |
+            Position: {position} | Supervisor ID: {supervisor_id}
             <Button
               onClick={() => {
                 handleShow();

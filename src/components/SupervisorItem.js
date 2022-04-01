@@ -40,7 +40,7 @@ function SupervisorItem({ supervisor, onDelete }) {
         <Accordion.Item eventKey="0">
           <Accordion.Header>{name} </Accordion.Header>
           <Accordion.Body>
-            Supervisor id: {id} | BOD: {date_of_birth} | Salary: ${salary} |
+            Supervisor ID: {id} | BOD: {date_of_birth} | Salary: ${salary} |
             Position: {position} |
             <Button
               onClick={() => {
@@ -50,7 +50,7 @@ function SupervisorItem({ supervisor, onDelete }) {
               className="employee-button"
               variant="warning"
             >
-              VIEW MANAGERS
+              View Managers
             </Button>
             <Button
               className="employee-button"
