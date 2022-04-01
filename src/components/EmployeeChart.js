@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import EmployeeItem from "./EmployeeItem";
+import CreateEmployeeModal from "./CreateEmployeeModal";
 import { v4 as uuid } from "uuid";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Row, Col } from "react-bootstrap";
 
 function EmployeeChart({
   employees,
@@ -12,6 +14,7 @@ function EmployeeChart({
   onSearch,
 }) {
   const [searchOnChange, setSearchOnChange] = useState("");
+  const [modalShow, setModalShow] = React.useState(false);
 
   const employees_high_to_low = () => {
     fetch("http://localhost:9292/employees/by_salary/")
@@ -49,21 +52,18 @@ function EmployeeChart({
   return (
     <>
       <h2> Employees: </h2>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formBasicEmail">
+      <Form onSubmit={handleSubmit} className="mb-3">
+        <Row>
+          <Col>
           <Form.Control
             onChange={(e) => setSearchOnChange(e.target.value)}
             type="search"
             value={searchOnChange}
-            placeholder="Enter an Employee Name"
+            placeholder="Search for an Employee"
           />
-          <Button variant="light" type="submit">
-            {" "}
-            Submit{" "}
-          </Button>
-        </Form.Group>
-      </Form>
-      <Button
+          </Col>
+          <Col>
+          <Button
         onClick={() => {
           employees_high_to_low();
         }}
@@ -71,14 +71,32 @@ function EmployeeChart({
       >
         Sort by Salary (high-low)
       </Button>
+      </Col>
+      <Col>
       <Button
         onClick={() => {
           employees_low_to_high();
         }}
       >
         Sort by Salary (low-high)
-      </Button>
+    </Button>
+    </Col>
+    <Col>
+    <Button 
+  onClick={()=>{
+    setModalShow(true)
+  }}  
+    variant="secondary">
+      Add a New Employee
+    </Button>
+             </Col>
+        </Row>
+    </Form>
       {employeeChart}
+      <CreateEmployeeModal
+      show={modalShow}
+      onHide={() => setModalShow(false)} 
+      />
     </>
   );
 }

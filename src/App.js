@@ -31,7 +31,7 @@ function App() {
   function onSearchEmployee(search) {
     setSearchEmployees([]);
     console.log(search);
-    fetch("http://localhost:9292/employees")
+    fetch("http://localhost:9292/employees/")
       .then((resp) => resp.json())
       .then((employees) => {
         setSearchEmployees(employees);
