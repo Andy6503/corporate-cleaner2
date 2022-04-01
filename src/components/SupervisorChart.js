@@ -1,6 +1,5 @@
 import React from "react";
 import SupervisorItem from "./SupervisorItem";
-
 import Button from "react-bootstrap/Button";
 import { v4 as uuid } from "uuid";
 
@@ -33,8 +32,9 @@ function SupervisorChart({ supervisors, setSupervisors, onDelete }) {
 
   return (
     <>
-      <h2> Supervisors: </h2>
+      <h2 className = "chart-title"> Supervisors: </h2>
       <Button
+      className = "left-button"
         onClick={() => {
           supervisors_high_to_low();
         }}

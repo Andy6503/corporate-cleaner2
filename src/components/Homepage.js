@@ -5,8 +5,8 @@ import "./Homepage.css";
 function Homepage() {
   return (
     <>
-      <div class="split left">
-        <div class="centered">
+      <div className="split left">
+        <div className="centered">
           <h1>Welcome to Corporate Cleaner</h1>
           <p className="homepage">
             {" "}
@@ -20,8 +20,8 @@ function Homepage() {
           </p>
         </div>
       </div>
-      <div class="split right">
-        <div class="centered">
+      <div className="split right">
+        <div className="centered">
           <div className="logo-2div">
             <Image src={Logo} rounded className="logo-2"></Image>
           </div>

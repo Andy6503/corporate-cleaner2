@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import Accordion from "react-bootstrap/Accordion";
-import Button from "react-bootstrap/Button";
 import EditFormModal from "./EditFormModal";
-import Modal from "react-bootstrap/Modal";
-import { v4 as uuid } from "uuid";
-
 import EmployeeManagerList from "./EmployeeManagerList";
+import { v4 as uuid } from "uuid";
+import { Accordion, Modal, Button } from "react-bootstrap";
 
 function EmployeeItem({ employee, onDelete, onEdit }) {
   const [modalShow, setModalShow] = React.useState(false);
@@ -21,15 +18,13 @@ function EmployeeItem({ employee, onDelete, onEdit }) {
       .then((resp) => resp.json())
       .then((manager) => {
         setAssociatedManager(manager);
-        console.log(manager);
       });
   };
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  console.log(associatedManager);
+  const handleShow = () => setShow(true)
   // const employeesManager = associatedManager.map((manager) => {
   //   return <EmployeeManagerList key={uuid()} manager={manager} />;
   // });
@@ -37,7 +32,7 @@ function EmployeeItem({ employee, onDelete, onEdit }) {
     <>
       <Accordion flush>
         <Accordion.Item eventKey="0">
-          <Accordion.Header>{name} </Accordion.Header>
+          <Accordion.Header className = "grow">{name} </Accordion.Header>
           <Accordion.Body>
             Employee ID: {id} | BOD: {date_of_birth} | Salary: ${salary} |
             Position: {position} | Manager ID: {manager_id}

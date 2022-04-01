@@ -1,19 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import EmployeeItem from "./EmployeeItem";
 import CreateEmployeeModal from "./CreateEmployeeModal";
 import { v4 as uuid } from "uuid";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button, Form } from "react-bootstrap";
 
 function EmployeeChart({
   employees,
   setEmployees,
   onDelete,
   onEdit,
-  onSearch,
-}) {
-  const [searchOnChange, setSearchOnChange] = useState("");
+}){
+
   const [modalShow, setModalShow] = React.useState(false);
 
   const employees_high_to_low = () => {
@@ -32,12 +29,7 @@ function EmployeeChart({
       });
   };
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    onSearch(searchOnChange);
-    setSearchOnChange("");
-  }
-
+  
   const employeeChart = employees.map((employee) => {
     return (
       <EmployeeItem
@@ -51,19 +43,12 @@ function EmployeeChart({
 
   return (
     <>
-      <h2> Employees: </h2>
-      <Form onSubmit={handleSubmit} className="mb-3">
+      <h2 className = "chart-title"> Employees: </h2>
+      <Form  className="mb-3">
         <Row>
           <Col>
-          <Form.Control
-            onChange={(e) => setSearchOnChange(e.target.value)}
-            type="search"
-            value={searchOnChange}
-            placeholder="Search for an Employee"
-          />
-          </Col>
-          <Col>
-          <Button
+          <Button 
+          className = "left-button"
         onClick={() => {
           employees_high_to_low();
         }}
@@ -95,6 +80,9 @@ function EmployeeChart({
       {employeeChart}
       <CreateEmployeeModal
       show={modalShow}
+      employees={employees}
+      setEmployees={setEmployees}
+      setModalShow={setModalShow}
       onHide={() => setModalShow(false)} 
       />
     </>

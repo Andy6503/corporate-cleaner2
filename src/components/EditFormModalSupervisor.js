@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import { Modal, Button, Form } from "react-bootstrap";
 
 const EditFormModalSupervisor = (props) => {
   const [newName, setName] = useState("");

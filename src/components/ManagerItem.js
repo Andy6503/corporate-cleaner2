@@ -1,10 +1,7 @@
-import React from "react";
-import Accordion from "react-bootstrap/Accordion";
-import Button from "react-bootstrap/Button";
+import React, { useState } from "react";
 import EditFormModalManager from "./EditFormModalManager";
-import Modal from "react-bootstrap/Modal";
-import { useState } from "react";
 import AssociateList from "./AssociateList";
+import { Accordion, Modal, Button } from "react-bootstrap";
 import { v4 as uuid } from "uuid";
 
 function ManagerItem({ manager, onDelete }) {
@@ -27,7 +24,7 @@ function ManagerItem({ manager, onDelete }) {
         setAssociatedEmployees(employees);
       });
   };
-  console.log(associatedEmployees);
+  
   const associateEmployeeList = associatedEmployees.map((assEmployee) => {
     return <AssociateList key={uuid()} assEmployee={assEmployee} />;
   });
@@ -36,7 +33,7 @@ function ManagerItem({ manager, onDelete }) {
     <>
       <Accordion flush>
         <Accordion.Item eventKey="0">
-          <Accordion.Header>{name} </Accordion.Header>
+          <Accordion.Header className = "grow">{name} </Accordion.Header>
           <Accordion.Body>
             Manager ID: {id} | BOD: {date_of_birth} | Salary: ${salary} |
             Position: {position} | Supervisor ID: {supervisor_id}

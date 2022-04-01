@@ -1,6 +1,5 @@
 import React from "react";
 import ManagerItem from "./ManagerItem.js";
-
 import Button from "react-bootstrap/Button";
 import { v4 as uuid } from "uuid";
 
@@ -27,8 +26,9 @@ function ManagerChart({ setManagers, managers, onDelete }) {
 
   return (
     <>
-      <h2> Managers:</h2>
+      <h2 className = "chart-title"> Managers:</h2>
       <Button
+      className = "left-button"
         onClick={() => {
           managers_high_to_low();
         }}

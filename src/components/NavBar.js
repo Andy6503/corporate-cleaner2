@@ -1,9 +1,6 @@
 import React from "react";
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
 import Logo from '../assets/Logo.png'
-import Image from 'react-bootstrap/Image'
-import { NavDropdown } from "react-bootstrap";
+import { NavDropdown, Navbar, Nav, Image } from "react-bootstrap";
 
 function NavBar( ){
     
@@ -18,15 +15,10 @@ function NavBar( ){
               <NavDropdown.Item href="/your-employees">Employees</NavDropdown.Item>
             <NavDropdown.Item href="/your-managers">Managers</NavDropdown.Item>
             <NavDropdown.Item href="/your-supervisors">Supervisors</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="/helpful-links"> Helpful Links</NavDropdown.Item>
             </NavDropdown>
                 </Nav>
-                <Navbar.Toggle />
-                    <Navbar.Collapse className="justify-content-end">
-                        <Navbar.Text >
-                            Signed in as: <a href="/account-details">Will Yu</a>
-                        </Navbar.Text>
-                    </Navbar.Collapse>
-            
     </Navbar>
     </>
     )

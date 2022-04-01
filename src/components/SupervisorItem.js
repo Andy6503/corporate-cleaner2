@@ -1,10 +1,7 @@
-import React from "react";
-import Accordion from "react-bootstrap/Accordion";
-import Button from "react-bootstrap/Button";
+import React, { useState } from "react";
 import EditFormModalSupervisor from "./EditFormModalSupervisor";
-import Modal from "react-bootstrap/Modal";
-import { useState } from "react";
 import SupervisorManagerList from "./SupervisorManagerList";
+import { Accordion, Modal, Button } from "react-bootstrap";
 import { v4 as uuid } from "uuid";
 
 function SupervisorItem({ supervisor, onDelete }) {
@@ -38,7 +35,7 @@ function SupervisorItem({ supervisor, onDelete }) {
     <>
       <Accordion flush>
         <Accordion.Item eventKey="0">
-          <Accordion.Header>{name} </Accordion.Header>
+          <Accordion.Header className = "grow">{name} </Accordion.Header>
           <Accordion.Body>
             Supervisor ID: {id} | BOD: {date_of_birth} | Salary: ${salary} |
             Position: {position} |

@@ -4,17 +4,16 @@ import NavBar from "./components/NavBar.js";
 import EmployeeChart from "./components/EmployeeChart";
 import ManagerChart from "./components/ManagerChart.js";
 import SupervisorChart from "./components/SupervisorChart";
-import AccountDetails from "./components/AccountDetails.js";
+import Linkspage from "./components/LinksPage.js";
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import "./App.css";
+
 
 function App() {
   const [employees, setEmployees] = useState([]);
   const [managers, setManagers] = useState([]);
   const [supervisors, setSupervisors] = useState([]);
-  const [searchEmployees, setSearchEmployees] = useState([]);
-
+  const [searchOnChange, setSearchOnChange] = useState("");
   //////////////////////////////////////////////////////////////////
   //FETCH EMPLOYEES
   useEffect(() => {
@@ -26,17 +25,9 @@ function App() {
   }, []);
 
   //SEARCH EMPLOYEES
-  const history = useHistory();
+ 
 
-  function onSearchEmployee(search) {
-    setSearchEmployees([]);
-    console.log(search);
-    fetch("http://localhost:9292/employees/")
-      .then((resp) => resp.json())
-      .then((employees) => {
-        setSearchEmployees(employees);
-      });
-  }
+ 
 
   //DELETE REQUEST EMPLOYEES
   const onDelete = (objID) => {
@@ -98,7 +89,8 @@ function App() {
         <EmployeeChart
           employees={employees}
           onDelete={onDelete}
-          onSearch={onSearchEmployee}
+          searchOnChange= {searchOnChange}
+          setSearchOnChange={setSearchOnChange}
           setEmployees={setEmployees}
         />
       </Route>
@@ -116,8 +108,8 @@ function App() {
           onDelete={onDeleteSuper}
         />
       </Route>
-      <Route path="/account-details">
-        <AccountDetails />
+      <Route path="/helpful-links">
+        <Linkspage />
       </Route>
     </div>
   );

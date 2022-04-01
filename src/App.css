@@ -84,3 +84,35 @@ h1 {
 .employee-button {
   margin-left: 15px;
 }
+
+.search-bar{
+  margin-left:10px;
+}
+
+
+.chart-title{
+  margin-left:15px;
+  color: white;
+  text-shadow: black;
+  margin-top:10px;
+  font-size: 35px;
+}
+
+.left-button{
+  margin-left:15px
+}
+
+
+.links-h2{
+  margin-top:15px;
+  margin-left:15px
+}
+
+
+.grow {
+  transition: all 0.025s ease-in-out;
+}
+.grow:hover {
+  transform: scale(1.025);
+}
+
