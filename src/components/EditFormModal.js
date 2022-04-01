@@ -31,7 +31,7 @@ const EditFormModal = (props) => {
       date_of_birth: newDob,
     };
     onEdit(data);
-    window.location.reload(false);
+    window.location.reload();
   };
 
   return (

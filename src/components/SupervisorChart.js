@@ -1,12 +1,10 @@
 import React from "react";
 import SupervisorItem from "./SupervisorItem";
-import EditFormModalSupervisor from "./EditFormModalSupervisor";
+
 import Button from "react-bootstrap/Button";
 import { v4 as uuid } from "uuid";
 
 function SupervisorChart({ supervisors, setSupervisors, onDelete }) {
-  const [modalShow, setModalShow] = React.useState(false);
-
   const supervisors_high_to_low = () => {
     fetch("http://localhost:9292/supervisors/by_salary/")
       .then((res) => res.json())
@@ -28,7 +26,6 @@ function SupervisorChart({ supervisors, setSupervisors, onDelete }) {
       <SupervisorItem
         key={uuid()}
         supervisor={supervisor}
-        setModalShow={setModalShow}
         onDelete={onDelete}
       />
     );
@@ -53,10 +50,6 @@ function SupervisorChart({ supervisors, setSupervisors, onDelete }) {
         Sort by Salary (low-high)
       </Button>
       {supervisorChart}
-      <EditFormModalSupervisor
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
     </>
   );
 }

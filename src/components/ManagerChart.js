@@ -1,12 +1,10 @@
 import React from "react";
 import ManagerItem from "./ManagerItem.js";
-import EditFormModalManager from "./EditFormModalManager";
+
 import Button from "react-bootstrap/Button";
 import { v4 as uuid } from "uuid";
 
 function ManagerChart({ setManagers, managers, onDelete }) {
-  const [modalShow, setModalShow] = React.useState(false);
-
   const managers_high_to_low = () => {
     fetch("http://localhost:9292/managers/by_salary/")
       .then((res) => res.json())
@@ -24,14 +22,7 @@ function ManagerChart({ setManagers, managers, onDelete }) {
   };
 
   const managerChart = managers.map((manager) => {
-    return (
-      <ManagerItem
-        key={uuid()}
-        manager={manager}
-        onDelete={onDelete}
-        setModalShow={setModalShow}
-      />
-    );
+    return <ManagerItem key={uuid()} manager={manager} onDelete={onDelete} />;
   });
 
   return (
@@ -53,10 +44,6 @@ function ManagerChart({ setManagers, managers, onDelete }) {
         Sort by Salary (low-high)
       </Button>
       {managerChart}
-      <EditFormModalManager
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
     </>
   );
 }

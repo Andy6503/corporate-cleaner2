@@ -1,8 +1,10 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
+import EditFormModalManager from "./EditFormModalManager";
 
-function ManagerItem({ manager, onDelete, setModalShow }) {
+function ManagerItem({ manager, onDelete }) {
+  const [modalShow, setModalShow] = React.useState(false);
   const { id, name, position, salary, date_of_birth, supervisor_id } = manager;
 
   const deleteItem = (id) => {
@@ -34,6 +36,11 @@ function ManagerItem({ manager, onDelete, setModalShow }) {
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
+      <EditFormModalManager
+        id={id}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </>
   );
 }
