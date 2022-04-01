@@ -10,8 +10,19 @@ import { v4 as uuid } from "uuid";
 function SupervisorItem({ supervisor, onDelete }) {
   const { id, name, position, salary, date_of_birth } = supervisor;
   const [modalShow, setModalShow] = React.useState(false);
+
+  const [associatedManagers, setAssociatedManagers] = useState([]);
   const deleteItem = (id) => {
     onDelete(id);
+  };
+
+  const getSupervisorEmployees = () => {
+    fetch(`http://localhost:9292/supervisors/${id}/managers`)
+      .then((resp) => resp.json())
+      .then((managers) => {
+        setAssociatedManagers(managers);
+        console.log(managers);
+      });
   };
 
   const [show, setShow] = useState(false);
@@ -19,7 +30,9 @@ function SupervisorItem({ supervisor, onDelete }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [associatedManagers, setAssociatedManagers] = useState([]);
+  const supervisorManagerList = associatedManagers.map((assManager) => {
+    return <SupervisorManagerList key={uuid()} assManager={assManager} />;
+  });
 
   return (
     <>
@@ -32,7 +45,7 @@ function SupervisorItem({ supervisor, onDelete }) {
             <Button
               onClick={() => {
                 handleShow();
-                console.log();
+                getSupervisorEmployees();
               }}
               className="employee-button"
               variant="warning"
@@ -65,7 +78,7 @@ function SupervisorItem({ supervisor, onDelete }) {
         <Modal.Header closeButton>
           <Modal.Title>Managers</Modal.Title>
         </Modal.Header>
-        <Modal.Body>managers go here</Modal.Body>
+        <Modal.Body>{supervisorManagerList}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
