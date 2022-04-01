@@ -71,7 +71,7 @@ function CreateEmployeeModal({ show, setModalShow, setEmployees, employees} ){
     </Form>
       </Modal.Body>
       <Modal.Footer>
-          <Button variant="success" type="submit" onClick={()=>{handleOnSubmit()}} > Add Emplooyee </Button>
+          <Button variant="success" type="submit" onClick={()=>{handleOnSubmit()}} > Add Employee </Button>
         <Button onClick={() => setModalShow(false)} variant="danger">Close</Button>
       </Modal.Footer>
     </Modal>
