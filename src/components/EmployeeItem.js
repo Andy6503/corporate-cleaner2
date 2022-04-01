@@ -18,8 +18,8 @@ function EmployeeItem({ employee, onDelete, onEdit }) {
         <Accordion.Item eventKey="0">
           <Accordion.Header>{name} </Accordion.Header>
           <Accordion.Body>
-            Employee id: {id} | BOD: {date_of_birth} | Salary: ${salary} |
-            Position: {position} | Manager: {manager_id}
+            Employee ID: {id} | BOD: {date_of_birth} | Salary: ${salary} |
+            Position: {position} | Manager ID: {manager_id}
             <Button
               className="employee-button"
               variant="success"
