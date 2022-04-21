@@ -7,7 +7,7 @@ function Homepage() {
     <>
       <div className="split left">
         <div className="centered">
-          <h1>Welcome to Corporate Cleaner</h1>
+          <h1>Welcome to Blue Collar Beauty</h1>
           <p className="homepage">
             {" "}
             Manage your workforce and all related information with this all

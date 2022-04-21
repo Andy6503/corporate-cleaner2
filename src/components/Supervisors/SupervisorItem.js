@@ -35,7 +35,7 @@ function SupervisorItem({ supervisor, onDelete }) {
     <>
       <Accordion flush>
         <Accordion.Item eventKey="0">
-          <Accordion.Header className = "grow">{name} </Accordion.Header>
+          <Accordion.Header className = "grow"> ♜ {name} </Accordion.Header>
           <Accordion.Body>
             Supervisor ID: {id} | BOD: {date_of_birth} | Salary: ${salary} |
             Position: {position} |

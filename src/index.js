@@ -11,6 +11,8 @@ const tagManagerArgs = {
 }
 TagManager.initialize(tagManagerArgs)
 
+
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

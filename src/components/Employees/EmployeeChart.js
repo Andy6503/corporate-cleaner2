@@ -14,7 +14,7 @@ function EmployeeChart({
   const [modalShow, setModalShow] = React.useState(false);
 
   const employees_high_to_low = () => {
-    fetch("http://localhost:9292/employees/by_salary/")
+    fetch("/employees/by_salary/")
       .then((res) => res.json())
       .then((employees) => {
         setEmployees(employees);
@@ -22,7 +22,7 @@ function EmployeeChart({
   };
 
   const employees_low_to_high = () => {
-    fetch("http://localhost:9292/employees/by_salary_asc/")
+    fetch("/employees/by_salary_asc/")
       .then((res) => res.json())
       .then((employees) => {
         setEmployees(employees);

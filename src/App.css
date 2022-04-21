@@ -12,6 +12,7 @@
   width: 200px;
 }
 .logo-2div {
+  padding-top: 100px;
   position: relative;
 }
 .url {
@@ -36,7 +37,7 @@
   transform: scale(1.05);
 }
 body {
-  background-color: grey;
+  background-color: rgb(45, 44, 44);
 }
 .accordion {
   padding: 1px;
@@ -47,7 +48,7 @@ body {
 }
 
 h1 {
-  color: rgb(130, 176, 77);
+  color: rgb(13,103,181);
   padding-top: 70px;
   padding-left: 70px;
   text-align: center;
@@ -64,10 +65,10 @@ h1 {
   padding-left: 70px;
 }
 .homepage-2 {
-  color: rgb(130, 176, 77);
+  color: rgb(13,103,181);
   text-shadow: black;
   font-size: x-large;
-  inline-size: 470px;
+  inline-size: 480px;
   text-align: justify;
   padding-left: 70px;
 }

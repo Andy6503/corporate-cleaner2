@@ -1,9 +1,9 @@
 import Homepage from "./components/Homepage";
 import { Route, Redirect } from "react-router-dom";
 import NavBar from "./components/NavBar.js";
-import EmployeeChart from "./components/EmployeeChart";
-import ManagerChart from "./components/ManagerChart.js";
-import SupervisorChart from "./components/SupervisorChart";
+import EmployeeChart from "./components/Employees/EmployeeChart";
+import ManagerChart from "./components/Managers/ManagerChart.js";
+import SupervisorChart from "./components/Supervisors/SupervisorChart";
 import Linkspage from "./components/LinksPage.js";
 import React, { useState, useEffect } from "react";
 import "./App.css";
@@ -14,10 +14,13 @@ function App() {
   const [managers, setManagers] = useState([]);
   const [supervisors, setSupervisors] = useState([]);
   const [searchOnChange, setSearchOnChange] = useState("");
+
+
+  
   //////////////////////////////////////////////////////////////////
   //FETCH EMPLOYEES
   useEffect(() => {
-    fetch("http://localhost:9292/employees")
+    fetch("/employees")
       .then((res) => res.json())
       .then((employees) => {
         setEmployees(employees);
@@ -31,7 +34,7 @@ function App() {
 
   //DELETE REQUEST EMPLOYEES
   const onDelete = (objID) => {
-    fetch(`http://localhost:9292/employees/${objID}`, {
+    fetch(`/employees/${objID}`, {
       method: "DELETE",
     }).then(() => {
       setEmployees(employees.filter((el) => el.id !== objID));
@@ -41,7 +44,7 @@ function App() {
   //////////////////////////////////////////////////////////////////
   //FETCH MANAGERS
   useEffect(() => {
-    fetch("http://localhost:9292/managers")
+    fetch("/managers")
       .then((res) => res.json())
       .then((managers) => {
         setManagers(managers);
@@ -50,7 +53,7 @@ function App() {
 
   // DELETE REQUEST MANAGERS
   const onDeleteManagers = (objID) => {
-    fetch(`http://localhost:9292/managers/${objID}`, {
+    fetch(`/managers/${objID}`, {
       method: "DELETE",
     }).then(() => {
       setManagers(managers.filter((el) => el.id !== objID));
@@ -60,7 +63,7 @@ function App() {
   //////////////////////////////////////////////////////////////////
   //FETCH SUPERVISORS
   useEffect(() => {
-    fetch("http://localhost:9292/supervisors")
+    fetch("/supervisors")
       .then((res) => res.json())
       .then((supervisors) => {
         setSupervisors(supervisors);
@@ -69,7 +72,7 @@ function App() {
 
   // DELETE REQUEST SUPERVISORS
   const onDeleteSuper = (objID) => {
-    fetch(`http://localhost:9292/supervisors/${objID}`, {
+    fetch(`/supervisors/${objID}`, {
       method: "DELETE",
     }).then(() => {
       setSupervisors(supervisors.filter((el) => el.id !== objID));

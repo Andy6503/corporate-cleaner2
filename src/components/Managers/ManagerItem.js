@@ -1,50 +1,51 @@
 import React, { useState } from "react";
-import EditFormModal from "./EditFormModal";
-import EmployeeManagerList from "./EmployeeManagerList";
-import { v4 as uuid } from "uuid";
+import EditFormModalManager from "./EditFormModalManager";
+import AssociateList from "../Employees/AssociateList";
 import { Accordion, Modal, Button } from "react-bootstrap";
+import { v4 as uuid } from "uuid";
 
-function EmployeeItem({ employee, onDelete, onEdit }) {
+function ManagerItem({ manager, onDelete }) {
   const [modalShow, setModalShow] = React.useState(false);
-  const { id, name, position, salary, date_of_birth, manager_id } = employee;
-  const [associatedManager, setAssociatedManager] = useState([]);
-  //delete
-  const deleteItem = (id) => {
-    onDelete(id);
-  };
-
-  const getEmployeeManager = () => {
-    fetch(`http://localhost:9292/employees/${id}/manager`)
-      .then((resp) => resp.json())
-      .then((manager) => {
-        setAssociatedManager(manager);
-      });
-  };
+  const { id, name, position, salary, date_of_birth, supervisor_id } = manager;
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true)
-  // const employeesManager = associatedManager.map((manager) => {
-  //   return <EmployeeManagerList key={uuid()} manager={manager} />;
-  // });
+  const handleShow = () => setShow(true);
+
+  const [associatedEmployees, setAssociatedEmployees] = useState([]);
+  const deleteItem = (id) => {
+    onDelete(id);
+  };
+  const getManagerEmployees = () => {
+    fetch(`http://localhost:9292/managers/${id}/employees`)
+      .then((resp) => resp.json())
+      .then((employees) => {
+        setAssociatedEmployees(employees);
+      });
+  };
+  
+  const associateEmployeeList = associatedEmployees.map((assEmployee) => {
+    return <AssociateList key={uuid()} assEmployee={assEmployee} />;
+  });
+
   return (
     <>
       <Accordion flush>
         <Accordion.Item eventKey="0">
-          <Accordion.Header className = "grow">{name} </Accordion.Header>
+          <Accordion.Header className = "grow">♞{name} </Accordion.Header>
           <Accordion.Body>
-            Employee ID: {id} | BOD: {date_of_birth} | Salary: ${salary} |
-            Position: {position} | Manager ID: {manager_id}
+            Manager ID: {id} | BOD: {date_of_birth} | Salary: ${salary} |
+            Position: {position} | Supervisor ID: {supervisor_id}
             <Button
               onClick={() => {
                 handleShow();
-                getEmployeeManager();
+                getManagerEmployees();
               }}
               className="employee-button"
               variant="warning"
             >
-              View Overseeing Manager
+              View Employees
             </Button>
             <Button
               className="employee-button"
@@ -63,19 +64,16 @@ function EmployeeItem({ employee, onDelete, onEdit }) {
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
-      <EditFormModal
+      <EditFormModalManager
         id={id}
         show={modalShow}
-        edithandler={onEdit}
         onHide={() => setModalShow(false)}
       />
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Managers</Modal.Title>
+          <Modal.Title>Employees</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <EmployeeManagerList key={uuid()} manager={associatedManager} />
-        </Modal.Body>
+        <Modal.Body>{associateEmployeeList}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
@@ -86,4 +84,4 @@ function EmployeeItem({ employee, onDelete, onEdit }) {
   );
 }
 
-export default EmployeeItem;
+export default ManagerItem;

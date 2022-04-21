@@ -41,7 +41,7 @@ function CreateEmployeeModal({ show, setModalShow, setEmployees, employees} ){
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
          Add New Employee
         </Modal.Title>

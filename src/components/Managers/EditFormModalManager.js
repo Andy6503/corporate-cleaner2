@@ -9,7 +9,7 @@ const EditFormModalManager = (props) => {
 
   //PATCH REQUEST Managers
   const onEdit = (data) => {
-    fetch(`http://localhost:9292/managers/${props.id}`, {
+    fetch(`/managers/${props.id}`, {
       method: "PATCH", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
