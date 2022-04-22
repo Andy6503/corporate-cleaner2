@@ -9,7 +9,7 @@ const EditFormModalSupervisor = (props) => {
 
   //PATCH REQUEST supervisors
   const onEdit = (data) => {
-    fetch(`http://localhost:9292/supervisors/${props.id}`, {
+    fetch(`/supervisors/${props.id}`, {
       method: "PATCH", // or 'PUT'
       headers: {
         "Content-Type": "application/json",

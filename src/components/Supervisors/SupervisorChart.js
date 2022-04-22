@@ -1,24 +1,13 @@
 import React from "react";
 import SupervisorItem from "./SupervisorItem";
-import {Button, Form, Row, Col} from "react-bootstrap";
+import {Button, Card} from "react-bootstrap";
 import { v4 as uuid } from "uuid";
 
-function SupervisorChart({ supervisors, setSupervisors, onDelete }) {
-  const supervisors_high_to_low = () => {
-    fetch("http://localhost:9292/supervisors/by_salary/")
-      .then((res) => res.json())
-      .then((supervisors) => {
-        setSupervisors(supervisors);
-      });
-  };
+function SupervisorChart({ supervisors, setSupervisors, onDelete, searchTerm, 
+  onSearchChange}) {
+ 
   const [modalShow, setModalShow] = React.useState(false);
-  const supervisors_low_to_high = () => {
-    fetch("http://localhost:9292/supervisors/by_salary_asc/")
-      .then((res) => res.json())
-      .then((supervisors) => {
-        setSupervisors(supervisors);
-      });
-  };
+  
 
   const supervisorChart = supervisors.map((supervisor) => {
     return (
@@ -32,40 +21,34 @@ function SupervisorChart({ supervisors, setSupervisors, onDelete }) {
 
   return (
     <>
-      <h2 className = "chart-title"> Supervisors: </h2>
-      <Form>
-        <Row>
-          <Col>
-      <Button
-      className = "left-button"
-        onClick={() => {
-          supervisors_high_to_low();
-        }}
-        variant="success"
-      >
-        Sort by Salary (high-low)
-      </Button>
-        </Col>
-        <Col>
-      <Button
-        onClick={() => {
-          supervisors_low_to_high();
-        }}
-      >
-        Sort by Salary (low-high)
-      </Button>
-       </Col>
-       <Col>
+    <Card>
+    <div class="row">
+      <div class="col-md-12 d-flex">
+      <Card.Title className = "chart-title"> Supervisors:
+      <div className="searchbar">
+      <label className="employeesrch" htmlFor="search">Search Supervisors:</label>
+      <input className="searchBox"
+        type="text"
+        id="search"
+        placeholder="Type a name to search..."
+        value={searchTerm}
+        onChange={(e) => onSearchChange(e.target.value)}
+      />
+    </div>
+    
+       
       <Button 
+      className="left-button"
       onClick={()=>{
         setModalShow(true)
       }}  
     variant="secondary">
-      Add a New Manager
+      Add a New Supervisor
     </Button>
-         </Col>
-       </Row>
-      </Form>
+          </Card.Title>
+        </div>
+      </div>
+    </Card>
       {supervisorChart}
     </>
   );

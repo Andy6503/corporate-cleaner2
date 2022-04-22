@@ -6,6 +6,7 @@ const EmployeeManagerList = ({ manager }) => {
   return (
     <ListGroup>
       <ListGroup.Item>
+      <div className="fw-bold">{name}</div>
         Manager ID: {id} | BOD: {date_of_birth} | Salary: ${salary} | Position:{" "}
         {position} | Supervisor ID: {supervisor_id}
       </ListGroup.Item>

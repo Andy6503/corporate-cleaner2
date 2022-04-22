@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import EditFormModalSupervisor from "./EditFormModalSupervisor";
 import SupervisorManagerList from "./SupervisorManagerList";
+import SupervisorManagerEmployeeList from "./SupervisorManagerEmployeeList";
 import { Accordion, Modal, Button } from "react-bootstrap";
 import { v4 as uuid } from "uuid";
 
@@ -14,11 +15,11 @@ function SupervisorItem({ supervisor, onDelete }) {
   };
 
   const getSupervisorEmployees = () => {
-    fetch(`http://localhost:9292/supervisors/${id}/managers`)
+    fetch(`/supervisors/${id}`)
       .then((resp) => resp.json())
-      .then((managers) => {
-        setAssociatedManagers(managers);
-        console.log(managers);
+      .then((supervisor) => {
+       
+        setAssociatedManagers(supervisor.managers);
       });
   };
 

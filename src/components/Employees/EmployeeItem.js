@@ -14,10 +14,10 @@ function EmployeeItem({ employee, onDelete, onEdit }) {
   };
 
   const getEmployeeManager = () => {
-    fetch(`http://localhost:9292/employees/${id}/manager`)
+    fetch(`/employees/${id}`)
       .then((resp) => resp.json())
-      .then((manager) => {
-        setAssociatedManager(manager);
+      .then((employee) => {
+        setAssociatedManager(employee.manager);
       });
   };
 
@@ -35,7 +35,7 @@ function EmployeeItem({ employee, onDelete, onEdit }) {
           <Accordion.Header className = "grow"> ♟{name} </Accordion.Header>
           <Accordion.Body>
            Employee ID: {id} | BOD: {date_of_birth} | Salary: ${salary} |
-            Position: {position} | Manager ID: {manager_id}
+            Position: {position}
             <Button
               onClick={() => {
                 handleShow();
@@ -71,7 +71,7 @@ function EmployeeItem({ employee, onDelete, onEdit }) {
       />
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Managers</Modal.Title>
+          <Modal.Title>Manager</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <EmployeeManagerList key={uuid()} manager={associatedManager} />

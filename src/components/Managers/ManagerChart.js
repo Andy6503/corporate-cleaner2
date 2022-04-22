@@ -1,65 +1,46 @@
 import React from "react";
 import ManagerItem from "./ManagerItem.js";
-import {Button, Row, Col, Form} from "react-bootstrap";
+import {Button, Card} from "react-bootstrap";
 import { v4 as uuid } from "uuid";
 
-function ManagerChart({ setManagers, managers, onDelete }) {
-  const managers_high_to_low = () => {
-    fetch("http://localhost:9292/managers/by_salary/")
-      .then((res) => res.json())
-      .then((managers) => {
-        setManagers(managers);
-      });
-  };
+function ManagerChart({ setManagers, managers, onDelete, searchTerm, 
+  onSearchChange}) {
+  
   const [modalShow, setModalShow] = React.useState(false);
-  const managers_low_to_high = () => {
-    fetch("http://localhost:9292/managers/by_salary_asc/")
-      .then((res) => res.json())
-      .then((managers) => {
-        setManagers(managers);
-      });
-  };
-
+ 
   const managerChart = managers.map((manager) => {
     return <ManagerItem key={uuid()} manager={manager} onDelete={onDelete} />;
   });
 
   return (
     <>
-      <h2 className = "chart-title"> Managers:</h2>
-      <Form className="mb-3">
-        <Row>
-          <Col>
-      <Button
-      className = "left-button"
-        onClick={() => {
-          managers_high_to_low();
-        }}
-        variant="success"
-      >
-        Sort by Salary (high-low)
-      </Button>
-          </Col>
-          <Col>
-      <Button
-        onClick={() => {
-          managers_low_to_high();
-        }}
-      >
-        Sort by Salary (low-high)
-      </Button>
-      </Col>
-      <Col>
+    <Card>
+    <div class="row">
+      <div class="col-md-12 d-flex">
+      <Card.Title className = "chart-title"> Managers:
+      <div className="searchbar">
+      <label className="employeesrch" htmlFor="search">Search Managers:</label>
+      <input className="searchBox"
+        type="text"
+        id="search"
+        placeholder="Type a name to search..."
+        value={searchTerm}
+        onChange={(e) => onSearchChange(e.target.value)}
+      />
+    </div>
+      
       <Button 
+      className="left-button"
       onClick={()=>{
         setModalShow(true)
       }}  
     variant="secondary">
       Add a New Manager
     </Button>
-         </Col>
-        </Row>
-      </Form>
+    </Card.Title>
+      </div>
+      </div>
+    </Card>
       {managerChart}
     </>
   );

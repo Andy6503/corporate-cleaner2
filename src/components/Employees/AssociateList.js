@@ -7,6 +7,7 @@ const AssociateList = ({ assEmployee }) => {
   return (
     <ListGroup>
       <ListGroup.Item>
+      <div className="fw-bold">{name}</div>
         Employee ID: {id} | BOD: {date_of_birth} | Salary: ${salary} | Position:{" "}
         {position} | Manager ID: {manager_id}
       </ListGroup.Item>

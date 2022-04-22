@@ -5,6 +5,7 @@ import "./Homepage.css";
 function Homepage() {
   return (
     <>
+    
       <div className="split left">
         <div className="centered">
           <h1>Welcome to Blue Collar Beauty</h1>

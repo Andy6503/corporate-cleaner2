@@ -18,10 +18,10 @@ function ManagerItem({ manager, onDelete }) {
     onDelete(id);
   };
   const getManagerEmployees = () => {
-    fetch(`http://localhost:9292/managers/${id}/employees`)
+    fetch(`/managers/${id}`)
       .then((resp) => resp.json())
-      .then((employees) => {
-        setAssociatedEmployees(employees);
+      .then((manager) => {
+        setAssociatedEmployees(manager.employees);
       });
   };
   

@@ -14,6 +14,16 @@ function App() {
   const [managers, setManagers] = useState([]);
   const [supervisors, setSupervisors] = useState([]);
   const [searchOnChange, setSearchOnChange] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch("/users").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
 
 
   
@@ -28,7 +38,17 @@ function App() {
   }, []);
 
   //SEARCH EMPLOYEES
- 
+  const displayedEmployee = employees.filter((employee) => {
+    return employee.name.toLowerCase().includes(searchTerm.toLowerCase());
+  })
+
+  const displayedManager = managers.filter((manager) => {
+    return manager.name.toLowerCase().includes(searchTerm.toLowerCase());
+  })
+
+  const displayedSupervisor = supervisors.filter((supervisor) => {
+    return supervisor.name.toLowerCase().includes(searchTerm.toLowerCase());
+  })
 
  
 
@@ -79,7 +99,8 @@ function App() {
     });
   };
 
-  return (
+  // if (user){
+    return (
     <div className="App">
       <NavBar />
       <Route exact path="/">
@@ -90,32 +111,38 @@ function App() {
       </Route>
       <Route path="/your-employees">
         <EmployeeChart
-          employees={employees}
+          employees={displayedEmployee}
           onDelete={onDelete}
           searchOnChange= {searchOnChange}
           setSearchOnChange={setSearchOnChange}
           setEmployees={setEmployees}
+          searchTerm={searchTerm} onSearchChange={setSearchTerm}
         />
       </Route>
       <Route path="/your-managers">
         <ManagerChart
-          managers={managers}
+          managers={displayedEmployee}
           onDelete={onDeleteManagers}
           setManagers={setManagers}
+          searchTerm={searchTerm} onSearchChange={setSearchTerm}
         />
       </Route>
       <Route path="/your-supervisors">
         <SupervisorChart
-          supervisors={supervisors}
+          supervisors={displayedEmployee}
           setSupervisors={setSupervisors}
           onDelete={onDeleteSuper}
+          searchTerm={searchTerm} onSearchChange={setSearchTerm}
         />
       </Route>
       <Route path="/helpful-links">
         <Linkspage />
       </Route>
     </div>
-  );
+    //  ) } else {
+    //   return <Linkspage onLogin={setUser} />
+    //  }
+    )
 }
 
 export default App;
